@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style/normolize.css" />
+    <!-- Кастомный селект -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"
+    />
+    <!-- Кастомный скролл -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css"
+    />
+    <link rel="stylesheet" href="style/style.css" />
+
+    <title>custom stuff</title>
+  </head>
+  <body>
+    <main class="main">
+      <form class="custom-checkbox" action="#" method="POST">
+        <h2 class="custom-checkbox__title">Категории:</h2>
+        <div class="custom-checkbox__block">
+          <label class="" for="dino">
+            <input class="custom-checkbox__input" id="dino" type="checkbox" />
+            Динозавры
+            <span></span>
+          </label>
+          <label class="" for="bear">
+            <input class="custom-checkbox__input" id="bear" type="checkbox" />
+            Медведи
+            <span></span>
+          </label>
+          <label class="" for="roe">
+            <input class="custom-checkbox__input" id="roe" type="checkbox" />
+            Косули
+            <span></span>
+          </label>
+          <label class="" for="fox">
+            <input class="custom-checkbox__input" id="fox" type="checkbox" />
+            Лисы
+            <span></span>
+          </label>
+          <label class="" for="wolf">
+            <input class="custom-checkbox__input" id="wolf" type="checkbox" />
+            Волки
+            <span></span>
+          </label>
+          <label class="" for="deer">
+            <input class="custom-checkbox__input" id="deer" type="checkbox" />
+            Олени и лоси
+            <span></span>
+          </label>
+        </div>
+      </form>
+
+      <form class="custom-select" action="#" method="POST">
+        <select class="custom-select__select" name="Материал" id="Material">
+          <option disabled selected value="">Материал</option>
+          <option value="Древесина">Древесина</option>
+          <option value="Металл">Металл</option>
+          <option value="Камень">Камень</option>
+          <option value="Пластик">Пластик</option>
+          <option value="Композитный">Композитный</option>
+          <option value="Гипс">Гипс</option>
+        </select>
+      </form>
+
+      <div class="custom-scroll" data-simplebar>
+        <p>
+          Сложно сказать, почему многие известные личности представлены в
+          исключительно положительном свете. Лишь активно развивающиеся страны
+          третьего мира будут объективно рассмотрены соответствующими
+          инстанциями. Мы вынуждены отталкиваться от того, что
+          высокотехнологичная концепция общественного уклада представляет собой
+          интересный эксперимент проверки глубокомысленных рассуждений. Имеется
+          спорная точка зрения, гласящая примерно следующее: непосредственные
+          участники технического прогресса освещают чрезвычайно интересные
+          особенности картины в целом, однако конкретные выводы, разумеется,
+          обнародованы. Значимость этих проблем настолько очевидна, что
+          социально-экономическое развитие, а также свежий взгляд на привычные
+          вещи - безусловно открывает новые горизонты для первоочередных
+          требований.
+        </p>
+      </div>
+
+      <!-- Кастомная форма -->
+      <form class="custom-form" action="#" method="POST">
+        <div class="custom-form__wrapper">
+          <input
+            class="custom-form__input"
+            required
+            placeholder="Имя*"
+            autocomplete="off"
+            data-validate-field="name"
+            name="name"
+            id="name"
+            type="text"
+          />
+        </div>
+
+        <div class="custom-form__wrapper">
+          <input
+            class="custom-form__input"
+            required
+            placeholder="Телефон*"
+            autocomplete="off"
+            data-validate-field="tel"
+            name="tel"
+            id="tel"
+            type="tel"
+          />
+        </div>
+        <div class="custom-form__wrapper">
+          <input
+            class="custom-form__input"
+            required
+            placeholder="E-mail*"
+            autocomplete="off"
+            data-validate-field="email"
+            name="email"
+            id="email"
+            type="email"
+          />
+        </div>
+        <button>Проверить</button>
+      </form>
+    </main>
+
+    <footer>
+      <div class="custom-map" id="map" style="width: 100%; height: 460px"></div>
+    </footer>
+
+    <!-- Кастомный селект -->
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script>
+      const element = document.querySelector(".custom-select__select");
+      const choices = new Choices(element, {
+        searchEnabled: false,
+        placeholder: false,
+        resetScrollPosition: false,
+        itemSelectText: "",
+      });
+    </script>
+
+    <!-- Карта Яндекс -->
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=вашAPI-ключ&lang=ru_RU"></script>
+
+    <script>
+      // Функция ymaps.ready() будет вызвана, когда
+      // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
+      ymaps.ready(init);
+      function init() {
+        // Создание карты.
+        var myMap = new ymaps.Map("map", {
+          // Координаты центра карты.
+          // Порядок по умолчанию: «широта, долгота».
+          // Чтобы не определять координаты центра карты вручную,
+          // воспользуйтесь инструментом Определение координат.
+          center: [
+            48.87219657376512,
+            2.354223999999991,
+            48.868767470342654,
+            2.343924317382795,
+          ],
+          // Уровень масштабирования. Допустимые значения:
+          // от 0 (весь мир) до 19.
+          zoom: 17,
+        });
+        // Удаление элементов управления
+        myMap.controls.remove("zoomControl");
+        myMap.controls.remove("geolocationControl");
+        myMap.controls.remove("routeButtonControl");
+        myMap.controls.remove("trafficControl");
+        myMap.controls.remove("searchControl");
+        myMap.controls.remove("typeSelector");
+        myMap.controls.remove("fullscreenControl");
+        myMap.controls.remove("rulerControl");
+        myMap.controls.remove("button");
+
+        (myPlacemark = new ymaps.Placemark(
+          myMap.getCenter(),
+          {
+            hintContent: "Кафе",
+            balloonContent: "Это красивая метка",
+          },
+          {
+            // Опции.
+            // Необходимо указать данный тип макета.
+            iconLayout: "default#image",
+            // Своё изображение иконки метки.
+            iconImageHref: "img/map-mark-svg.svg",
+            // Размеры метки.
+            iconImageSize: [31, 42],
+            // Смещение левого верхнего угла иконки относительно
+            // её "ножки" (точки привязки).
+            iconImageOffset: [-5, -38],
+          }
+        )),
+          myMap.geoObjects.add(myPlacemark);
+      }
+
+      var typecontrol = new YMaps.TypeControl();
+      map.addControl(typecontrol);
+
+      YMaps.Events.observe(map, map.Events.Click, function () {
+        map.removeControl(typecontrol);
+      });
+    </script>
+
+    <!-- Кастомный скролл -->
+    <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
+    <!-- Кастомная форма -->
+    <script src="script/inputmask.min.js"></script>
+    <script src="script/just-validate.min.js"></script>
+    <script>
+      var selector = document.querySelector("input[type='tel']");
+
+      var im = new Inputmask("+7 (999)-999-99-99");
+      im.mask(selector);
+
+      new JustValidate(".custom-form", {
+        rules: {
+          name: {
+            required: true,
+            minLength: 2,
+            maxlength: 10,
+          },
+          tel: {
+            required: true,
+            function: (name, value) => {
+              const phone = selector.inputmask.unmaskedvalue();
+              return Number(phone) && phone.length === 10;
+            },
+          },
+          email: {
+            required: true,
+            email: true,
+          },
+        },
+
+        messages: {
+          name: {
+            required: "Как вас зовут?",
+          },
+          email: {
+            required: "Укажите ваш e-mail",
+            email: "Введите почту правильно",
+          },
+          tel: {
+            required: "Укажите ваш телефон",
+            function: "Введите полнстью телефон",
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
